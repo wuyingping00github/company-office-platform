@@ -20,6 +20,6 @@ public class CustomerController {
 	@RequestMapping("getCustomer")
 	public String getCustomer() {
 		
-		return "";
+		return "Hello World!";
 	}
 }

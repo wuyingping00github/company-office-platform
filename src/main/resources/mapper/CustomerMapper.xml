@@ -1,46 +1,76 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="company-office-platform.src.main.java.company.office.mapper.CustomerMapper">
-    <resultMap id="baseResultMap" type="company-office-platform.src.main.java.company.office.mapper.Customer">
-        <result column="order_item_id" property="orderItemId" jdbcType="INTEGER"/>
-        <result column="order_id" property="orderId" jdbcType="INTEGER"/>
-        <result column="user_id" property="userId" jdbcType="INTEGER"/>
-        <result column="status" property="status" jdbcType="VARCHAR"/>
+<!-- 
+	nameSpace：命名空间，它的作用就是对SQL进行分类化管理，可以理解为SQL隔离
+	注意：使用MAPPER代理开发时，nameSpace有特殊且重要的作用
+ -->
+<mapper namespace="customerOperation">
+    <resultMap id="customerMap" type="company.office.mapper.Customer">
+        <id column="customer_id"           property="customerId"       jdbcType="BIGINT"/>
+        <result column="customer_name"     property="customerName"     jdbcType="VARCHAR"/>
+        <result column="customer_birthday" property="customerBirthday" jdbcType="Date"/>
+        <result column="customer_password" property="customerPassword" jdbcType="VARCHAR"/>
+        <result column="customer_gender"   property="customerGender"   jdbcType="VARCHAR"/>
+        <result column="customer_phone"    property="customerPhone"    jdbcType="BIGINT"/>
+    <collection property="harvestList" ofType="company.office.entity.HarvestInfo">
+        <result column="customer_id"       property="customerId"     jdbcType="BINGINT"/>
+        <result column="Harvest_Address"   property="HarvestAddress" jdbcType="VARCHAR"/>
+        <result column="Harvest_Phone"     property="HarvestPhone"   jdbcType="BINGINT"/>
+        </collection>
     </resultMap>
-    
      <update id="createIfNotExistsTable">
-        CREATE TABLE IF NOT EXISTS t_order_item (order_item_id BIGINT AUTO_INCREMENT, order_id BIGINT, user_id INT NOT NULL, status VARCHAR(50), PRIMARY KEY (order_item_id));
+        CREATE TABLE IF NOT EXISTS customer (
+        customer_id       BIGINT       AUTO_INCREMENT, 
+        customer_name     VARCHAR(128) NOT NULL, 
+        customer_birthday DATE         NOT NULL,
+        customer_password VARCHAR(128) NOT NULL, 
+        customer_name     VARCHAR(128) NOT NULL, 
+        customer_gender   VARCHAR(6)   NOT NULL,
+        customer_phone    BIGINT       NOT NULL, 
+        PRIMARY KEY (customer_id));
     </update>
 
     <update id="truncateTable">
-        TRUNCATE TABLE t_order_item;
+        TRUNCATE TABLE customer;
     </update>
-    
+
     <update id="dropTable">
-        DROP TABLE IF EXISTS t_order_item;
+        DROP TABLE IF EXISTS customer;
     </update>
-    
-    <insert id="insert" useGeneratedKeys="true" keyProperty="orderItemId">
-        INSERT INTO t_order_item (
-          order_id, user_id, status
+
+    <insert id="insert" useGeneratedKeys="true" keyProperty="customerId" parameterType="company.office.entity.Customer">
+       <!-- 这是获取自增长的id值 ，一般用after，before可能失效 -->
+       <selectKey keyProperty="customerId" resultType="BIGINT" order="AFTER">
+       SELECT LAST_INSERT_ID()
+       </selectKey>
+        INSERT INTO 
+        customer (
+          customer_name,customer_password,
+          customer_birthday,
+          customer_gender,customer_phone
         )
         VALUES (
-        #{orderId,jdbcType=INTEGER},
-        #{userId,jdbcType=INTEGER},
-        #{status,jdbcType=VARCHAR}
+        #{customerId,jdbcType=BIGINT},
+        #{customerName,jdbcType=VARCHAR},
+        #{customerBirthday,jdbcType=DATE}
+        #{customerPassword,jdbcType=VARCHAR},
+        #{customerGender,jdbcType=VARCHAR},
+        #{customerPhone,jdbcType=BIGINT}
         )
     </insert>
-    
+
     <delete id="delete">
-        DELETE FROM t_order_item WHERE order_id = #{orderId,jdbcType=INTEGER}
+        DELETE FROM 
+        customer 
+        WHERE 
+        customerId = #{customerId,jdbcType=INTEGER}
     </delete>
-    
-    <select id="selectAll" resultMap="baseResultMap">
+
+    <!-- 查询所有信息 -->
+    <select id="selectAll" resultMap="customerMap">
         SELECT
-        i.*
+        *
         FROM
-        t_order o, t_order_item i
-        WHERE
-        o.order_id = i.order_id
+        customer   
     </select>
 </mapper>
