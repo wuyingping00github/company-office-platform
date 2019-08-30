@@ -1,0 +1,14 @@
+<component name="ArtifactManager">
+  <artifact type="war" name="company-office-platform:war">
+    <output-path>$PROJECT_DIR$/target</output-path>
+    <properties id="maven-jee-properties">
+      <options>
+        <module>company-office-platform</module>
+        <packaging>war</packaging>
+      </options>
+    </properties>
+    <root id="archive" name="company-office-platform.war">
+      <element id="artifact" artifact-name="company-office-platform:war exploded" />
+    </root>
+  </artifact>
+</component>

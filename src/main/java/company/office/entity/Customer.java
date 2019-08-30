@@ -105,7 +105,7 @@ public class Customer {
 	 *            顾客生日
 	 * @param customerPhone
 	 *            顾客电话
-	 * @param harvestInfo
+	 * @param harvestList
 	 *            顾客收货信息
 	 */
 	public Customer(long customerId, String customerName, String customerPassword, String customergender,
@@ -120,4 +120,15 @@ public class Customer {
 		this.harvestList = harvestList;
 	}
 
+	
+	public Customer(String customerName, String customerPassword, String customergender,
+			Date customerBirthday, long customerPhone){
+		
+		this.customerName = customerName;
+		this.customerPassword = customerPassword;
+		this.customerGender = customergender;
+		this.customerBirthday = customerBirthday;
+		this.customerPhone = customerPhone;
+		
+	}
 }
