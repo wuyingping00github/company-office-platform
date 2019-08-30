@@ -33,6 +33,12 @@ public interface CustomerMapper {
     Long insert(Customer customer);
     
     /**
+     * 更新信息，按照顾客对象来修改
+     * @param customer
+     */
+    void update(Customer customer);
+    
+    /**
      * 删除信息，按照顾客ID来删除
      * @param customerId
      */
@@ -44,7 +50,7 @@ public interface CustomerMapper {
      */
     List<Customer> selectAll();
     
-    /*
+    /**
      * 删除表，直接从数据库移除该表
      */
     void dropTable();

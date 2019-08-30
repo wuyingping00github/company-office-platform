@@ -22,37 +22,37 @@ public class CustomerServiceImpl implements CustomerService {
 	@Override
 	public void createIfNotExistsTable() {
 		
-		
+		customerMapper.createIfNotExistsTable();
 	}
 
 	@Override
 	public void truncateTable() {
 		// TODO Auto-generated method stub
-		
+		customerMapper.truncateTable();
 	}
 
 	@Override
 	public Long insert(Customer customer) {
 		// TODO Auto-generated method stub
-		return null;
+		return customerMapper.insert(customer);
 	}
 
 	@Override
 	public void delete(Long customerId) {
 		// TODO Auto-generated method stub
-		
+		customerMapper.delete(customerId);
 	}
 
 	@Override
 	public List<Customer> selectAll() {
 		// TODO Auto-generated method stub
-		return null;
+		return customerMapper.selectAll();
 	}
 
 	@Override
 	public void dropTable() {
 		// TODO Auto-generated method stub
-		
+		customerMapper.dropTable();
 	}
 
 }

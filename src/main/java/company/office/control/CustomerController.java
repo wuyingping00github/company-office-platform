@@ -14,12 +14,13 @@ import company.office.service.CustomerService;
 public class CustomerController {
 
 	@Autowired
-	 private CustomerService cusService;
+	 private CustomerService customerService;
 	
 	@ResponseBody
 	@RequestMapping("getCustomer")
 	public String getCustomer() {
-		
-		return "Hello World!";
+		customerService.createIfNotExistsTable();
+		return "Hello World!-------success";
 	}
+
 }

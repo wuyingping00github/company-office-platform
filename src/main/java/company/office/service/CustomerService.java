@@ -27,8 +27,8 @@ public interface CustomerService {
     
     /**
      * 增加信息，按照顾客对象来增加
-     * @param customer
-     * @return
+     * @param customer 客户对象
+     * @return 返回主键
      */
     Long insert(Customer customer);
     
@@ -44,7 +44,7 @@ public interface CustomerService {
      */
     List<Customer> selectAll();
     
-    /*
+    /**
      * 删除表，直接从数据库移除该表
      */
     void dropTable();
