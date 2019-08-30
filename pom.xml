@@ -172,26 +172,30 @@
 	</dependencies>
 	<build>
 		<finalName>company-office-platform</finalName>
-		<resources>
-			<resource>
-				<directory>src/main/java</directory>
-				<includes>
-					<include>**/*.xml</include>
-				</includes>
-			</resource>
-			<resource>
-				<directory>src/main/resources</directory>
-				<includes>
-					<include>**/*.*</include>
-				</includes>
-			</resource>
-		</resources>
+		 <resources>  
+      <!-- maven项目中src源代码下的xml等资源文件编译进classes文件夹，
+      	注意：如果没有这个，它会自动搜索resources下是否有mapper.xml文件，
+      	如果没有就会报org.apache.ibatis.binding.BindingException: Invalid bound statement (not found): ... -->
+      <resource>  
+        <directory>src/main/java</directory>  
+        <includes>  
+          <include>**/*.xml</include>  
+        </includes>  
+        <filtering>true</filtering>
+      </resource>
+      
+      <!--将resources目录下的配置文件编译进classes文件  -->  
+      <resource>
+			<directory>src/main/resources</directory>
+			<filtering>true</filtering>
+	  </resource>
+    </resources>  
 		<plugins>
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
 				<configuration>
-					<mainClass>com.gyf.App</mainClass>
+					<mainClass>company.office</mainClass>
 				</configuration>
 				<executions>
 					<execution>

@@ -7,14 +7,22 @@ package company.office.entity;
  */
 public class HarvestInfo {
 	
-	//顾客账号，也是ID
+	//收获信息Id
+	private long harvestId;
+	//顾客账号，也是ID,外键
 	private long customerId;
 	//收货地址
-	private String HarvestAddress;
+	private String harvestAddress;
 	//收获电话
-	private String HarvestPhone;
+	private String harvestPhone;
+
 	
-	
+	public long getHarvestId() {
+		return harvestId;
+	}
+	public void setHarvestId(long harvestId) {
+		this.harvestId = harvestId;
+	}
 	public long getCustomerId() {
 		return customerId;
 	}
@@ -22,30 +30,29 @@ public class HarvestInfo {
 		this.customerId = customerId;
 	}
 	public String getHarvestAddress() {
-		return HarvestAddress;
+		return harvestAddress;
 	}
 	public void setHarvestAddress(String harvestAddress) {
-		HarvestAddress = harvestAddress;
+		this.harvestAddress = harvestAddress;
 	}
 	public String getHarvestPhone() {
-		return HarvestPhone;
+		return harvestPhone;
 	}
 	public void setHarvestPhone(String harvestPhone) {
-		HarvestPhone = harvestPhone;
+		this.harvestPhone = harvestPhone;
 	}
-	
-	
 	/**
 	 * 有参构造器（全参构造）
 	 * @param customerId 顾客账号
 	 * @param harvestAddress 收获地址
 	 * @param harvestPhone   收货电话
 	 */
-	public HarvestInfo(long customerId, String harvestAddress, String harvestPhone) {
+	public HarvestInfo(long harvestId,long customerId, String harvestAddress, String harvestPhone) {
 		super();
+		this.harvestId = harvestId;
 		this.customerId = customerId;
-		HarvestAddress = harvestAddress;
-		HarvestPhone = harvestPhone;
+		this.harvestAddress = harvestAddress;
+		this.harvestAddress = harvestPhone;
 	}
 	
 	
@@ -60,8 +67,8 @@ public class HarvestInfo {
 	
 	@Override
 	public String toString() {
-		return "HarvestInfo [customerId=" + customerId + ", HarvestAddress=" + HarvestAddress + ", HarvestPhone="
-				+ HarvestPhone + "]";
+		return "HarvestInfo [harvestId=" + harvestId + ",customerId=" + customerId + ", HarvestAddress=" + harvestAddress + ", HarvestPhone="
+				+ harvestPhone + "]";
 	}
 
 	
