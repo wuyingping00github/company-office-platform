@@ -120,4 +120,15 @@ public class Customer {
 		this.harvestList = harvestList;
 	}
 
+	
+	public Customer(String customerName, String customerPassword, String customergender,
+			Date customerBirthday, long customerPhone){
+		
+		this.customerName = customerName;
+		this.customerPassword = customerPassword;
+		this.customerGender = customergender;
+		this.customerBirthday = customerBirthday;
+		this.customerPhone = customerPhone;
+		
+	}
 }

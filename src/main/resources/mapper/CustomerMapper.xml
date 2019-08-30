@@ -22,11 +22,10 @@
     </resultMap>
      <update id="createIfNotExistsTable">
         CREATE TABLE IF NOT EXISTS customer (
-        customer_id       BIGINT       AUTO_INCREMENT, 
-        customer_name     VARCHAR(128) NOT NULL, 
+        customer_id       BIGINT       AUTO_INCREMENT,
+        customer_name     VARCHAR(128) NOT NULL,
         customer_birthday DATE         NOT NULL,
         customer_password VARCHAR(128) NOT NULL, 
-        customer_name     VARCHAR(128) NOT NULL, 
         customer_gender   VARCHAR(6)   NOT NULL,
         customer_phone    BIGINT       NOT NULL, 
         PRIMARY KEY (customer_id));
