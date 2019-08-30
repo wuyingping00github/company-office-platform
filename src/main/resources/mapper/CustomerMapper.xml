@@ -5,17 +5,18 @@
 	注意：使用MAPPER代理开发时，nameSpace有特殊且重要的作用
 	两个文件通过mapper.xml文件中的 namespace 形成映射。
  -->
-<mapper namespace="company。office。mapper。CustomerMapper">
+<mapper namespace="company.office.mapper.CustomerMapper">
     <resultMap id="customerMap" type="company.office.entity.Customer">
         <id column="customer_id"           property="customerId"       jdbcType="BIGINT"/>
         <result column="customer_name"     property="customerName"     jdbcType="VARCHAR"/>
-        <result column="customer_birthday" property="customerBirthday" jdbcType="Date"/>
+        <result column="customer_birthday" property="customerBirthday" jdbcType="DATE"/>
         <result column="customer_password" property="customerPassword" jdbcType="VARCHAR"/>
         <result column="customer_gender"   property="customerGender"   jdbcType="VARCHAR"/>
         <result column="customer_phone"    property="customerPhone"    jdbcType="BIGINT"/>
     <collection property="harvestList" ofType="company.office.entity.HarvestInfo">
+        <id     column="harvest_id"        property="harvestId"      jdbcType="BINGINT"/>
         <result column="customer_id"       property="customerId"     jdbcType="BINGINT"/>
-        <result column="Harvest_Address"   property="HarvestAddress" jdbcType="VARCHAR"/>
+        <result column="Harvest_Address"   property="harvestAddress" jdbcType="VARCHAR"/>
         <result column="Harvest_Phone"     property="HarvestPhone"   jdbcType="BINGINT"/>
         </collection>
     </resultMap>
@@ -44,7 +45,7 @@
     customer_name = #{customerName,jdbctype=BIGINT},
     customer_password = #{customerPassword,jdbctype=BIGINT},
     customer_gender = #{customerGender,jdbctype=BIGINT},
-    customer_birthday = #{customerBirthday,jdbctype=BIGINT},
+    customer_birthday = #{customerBirthday,jdbctype=DATE},
     customer_phone = #{customerPhone,jdbctype=BIGINT}
     WHERE 
     customer_id = #{customerId,jdbctype=BIGINT}
@@ -75,7 +76,7 @@
         DELETE FROM 
         customer 
         WHERE 
-        customerId = #{customerId,jdbcType=INTEGER}
+        customerId = #{customerId,jdbcType=BIGINT}
     </delete>
 
     <!-- 查询所有信息 -->
