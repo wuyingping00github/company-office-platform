@@ -1,8 +1,9 @@
 server:
   port: 8080
   servlet:
-    context-path: /company-office-platform
-
+    context-path: /company-office
+ 
 mybatis:
- configuration:
-  map-underscore-to-camel-case: true
+  config-location: classpath:mybaties/sqlMapConfig.xml
+  mapper-locations: classpath:mapper/*.xml
+  type-aliases-package: company.office.mapper

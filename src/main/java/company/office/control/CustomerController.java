@@ -18,13 +18,13 @@ import company.office.service.CustomerService;
 public class CustomerController {
 
 	@Autowired
-	 private CustomerService customerService;
+	 private CustomerService  customerService;
 	
 	@ResponseBody
 	@RequestMapping("getCustomer")
 	public String getCustomer() {
 		customerService.createIfNotExistsTable();
-		return "Hello World!-------success";
+		return "success";
 	}
 	
 	@ResponseBody
@@ -33,7 +33,7 @@ public class CustomerController {
 		Customer customer = new Customer("customerName", "customerPassword", "customergender",
 				new Date(), 15207104346L);
 		customerService.insert(customer);
-		return "Hello World!-------success";
+		return "success";
 	}
 	
 	@ResponseBody
@@ -42,6 +42,6 @@ public class CustomerController {
 		Customer customer = new Customer();
 		customer.setCustomerId(15207104346L);
 		customerService.delete(customer.getCustomerId());
-		return "Hello World!-------success";
+		return "success";
 	}
 }

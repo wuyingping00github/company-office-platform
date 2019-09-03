@@ -6,20 +6,22 @@
 	两个文件通过mapper.xml文件中的 namespace 形成映射。
  -->
 <mapper namespace="company.office.mapper.CustomerMapper">
+
     <resultMap id="customerMap" type="company.office.entity.Customer">
-        <id column="customer_id"           property="customerId"       jdbcType="BIGINT"/>
-        <result column="customer_name"     property="customerName"     jdbcType="VARCHAR"/>
-        <result column="customer_birthday" property="customerBirthday" jdbcType="DATE"/>
-        <result column="customer_password" property="customerPassword" jdbcType="VARCHAR"/>
-        <result column="customer_gender"   property="customerGender"   jdbcType="VARCHAR"/>
-        <result column="customer_phone"    property="customerPhone"    jdbcType="BIGINT"/>
+        <id column="customer_id"           property="customerId"       javaType="long"     jdbcType="BIGINT"/>
+        <result column="customer_name"     property="customerName"     javaType="String"   jdbcType="VARCHAR"/>
+        <result column="customer_birthday" property="customerBirthday" javaType="Date"     jdbcType="DATE"/>
+        <result column="customer_password" property="customerPassword" javaType="String"   jdbcType="VARCHAR"/>
+        <result column="customer_gender"   property="customerGender"   javaType="String"   jdbcType="VARCHAR"/>
+        <result column="customer_phone"    property="customerPhone"    javaType="long"     jdbcType="BIGINT"/>
     <collection property="harvestList" ofType="company.office.entity.HarvestInfo">
-        <id     column="harvest_id"        property="harvestId"      jdbcType="BINGINT"/>
-        <result column="customer_id"       property="customerId"     jdbcType="BINGINT"/>
-        <result column="Harvest_Address"   property="harvestAddress" jdbcType="VARCHAR"/>
-        <result column="Harvest_Phone"     property="HarvestPhone"   jdbcType="BINGINT"/>
+        <id     column="harvest_id"        property="harvestId"      javaType="long"    jdbcType="BIGINT"/>
+        <result column="customer_id"       property="customerId"     javaType="long"    jdbcType="BIGINT"/>
+        <result column="Harvest_Address"   property="harvestAddress" javaType="String"  jdbcType="VARCHAR"/>
+        <result column="Harvest_Phone"     property="HarvestPhone"   javaType="long"    jdbcType="BIGINT"/>
         </collection>
     </resultMap>
+    
      <update id="createIfNotExistsTable">
         CREATE TABLE IF NOT EXISTS customer (
         customer_id       BIGINT       AUTO_INCREMENT,
@@ -28,26 +30,26 @@
         customer_password VARCHAR(128) NOT NULL, 
         customer_gender   VARCHAR(6)   NOT NULL,
         customer_phone    BIGINT       NOT NULL, 
-        PRIMARY KEY (customer_id));
+        PRIMARY KEY (customer_id))
     </update>
 
     <update id="truncateTable">
-        TRUNCATE TABLE customer;
+        TRUNCATE TABLE customer
     </update>
 
     <update id="dropTable">
-        DROP TABLE IF EXISTS customer;
+        DROP TABLE IF EXISTS customer
     </update>
     <update id="update" parameterType="company.office.entity.Customer">
     UPDATE customer 
     SET 
-    customer_name = #{customerName,jdbctype=BIGINT},
-    customer_password = #{customerPassword,jdbctype=BIGINT},
-    customer_gender = #{customerGender,jdbctype=BIGINT},
-    customer_birthday = #{customerBirthday,jdbctype=DATE},
-    customer_phone = #{customerPhone,jdbctype=BIGINT}
+    customer_name = #{customerName,jdbctype="VARCHAR"},
+    customer_password = #{customerPassword,jdbctype="VARCHAR"},
+    customer_gender = #{customerGender,jdbctype="VARCHAR"},
+    customer_birthday = #{customerBirthday,jdbctype="DATE"},
+    customer_phone = #{customerPhone,jdbctype="BIGINT"}
     WHERE 
-    customer_id = #{customerId,jdbctype=BIGINT}
+    customer_id = #{customerId,jdbctype="BIGINT"}
     </update>
 
     <insert id="insert" useGeneratedKeys="true" keyProperty="customerId" parameterType="company.office.entity.Customer">
@@ -62,12 +64,12 @@
           customer_gender,customer_phone
         )
         VALUES (
-        #{customerId,jdbcType=BIGINT},
-        #{customerName,jdbcType=VARCHAR},
-        #{customerBirthday,jdbcType=DATE}
-        #{customerPassword,jdbcType=VARCHAR},
-        #{customerGender,jdbcType=VARCHAR},
-        #{customerPhone,jdbcType=BIGINT}
+        #{customerId,jdbcType="BIGINT"},
+        #{customerName,jdbcType="VARCHAR"},
+        #{customerBirthday,jdbcType="DATE"}
+        #{customerPassword,jdbcType="VARCHAR"},
+        #{customerGender,jdbcType="VARCHAR"},
+        #{customerPhone,jdbcType="BIGINT"}
                )
     </insert>
 
@@ -75,7 +77,7 @@
         DELETE FROM 
         customer 
         WHERE 
-        customerId = #{customerId,jdbcType=BIGINT}
+        customerId = #{customerId,jdbcType="BIGINT"}
     </delete>
 
     <!-- 查询所有信息 -->
