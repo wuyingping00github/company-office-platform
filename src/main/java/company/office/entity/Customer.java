@@ -3,6 +3,8 @@ package company.office.entity;
 import java.util.Date;
 import java.util.List;
 
+import javax.persistence.Entity;
+
 /**
  * customer表，对应数据库里面同名的表，数据库不分大小写写
  * 

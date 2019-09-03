@@ -12,7 +12,7 @@ import company.office.entity.Customer;
 /**
  * dao曾的数据操作框架使用的是mybtis,dao曾使用Mapper而不是Reposity
  * 
- * @author Shinelon
+ * @author  吴应平
  *
  */
 @Mapper

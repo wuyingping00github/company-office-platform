@@ -171,23 +171,13 @@
 			<artifactId>poi-ooxml-schemas</artifactId>
 			<version>3.14</version>
 		</dependency>
+		     <dependency>
+          <groupId>org.springframework.boot</groupId>
+          <artifactId>spring-boot-starter-data-jpa</artifactId>
+      </dependency>
 	</dependencies>
 	<build>
 		<finalName>company-office-platform</finalName>
-		   <resources>
-         <resource>
-             <directory>src/main/java</directory>
-             <excludes>
-                 <exclude>**/*.java</exclude>
-             </excludes>
-         </resource>
-         <resource>
-             <directory>src/main/resources</directory>
-             <includes>
-                 <include>**/*.*</include>
-             </includes>
-        </resource>
-    </resources>
 		<plugins>
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
@@ -204,5 +194,6 @@
 				</executions>
 			</plugin>
 		</plugins>
+		
 	</build>
 </project>
