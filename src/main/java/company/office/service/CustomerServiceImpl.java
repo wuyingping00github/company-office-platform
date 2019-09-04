@@ -10,7 +10,6 @@ import company.office.mapper.CustomerMapper;
 /**
  * Customer的service曾的实现类
  * @author 吴应平
- *
  */
 @Service
 public class CustomerServiceImpl implements CustomerService {
@@ -27,7 +26,7 @@ public class CustomerServiceImpl implements CustomerService {
 
 	@Override
 	public void truncateTable() {
-		// TODO Auto-generated method stub
+
 		customerMapper.truncateTable();
 	}
 

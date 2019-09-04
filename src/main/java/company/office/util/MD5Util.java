@@ -12,7 +12,7 @@ public class MD5Util {
 	/***
 	 * MD5加码 生成32位md5码
 	 */
-	public static String string2MD5(String inStr){
+	public static String getMD5String(String inStr){
 		
 		//获取MD5
 		MessageDigest md5 = null;
@@ -56,7 +56,7 @@ public class MD5Util {
 	public static void main(String args[]) {
 		String s = new String("tangfuqiang");
 		System.out.println("原始：" + s);
-		System.out.println("MD5后：" + string2MD5(s));
+		System.out.println("MD5后：" + getMD5String(s));
  
 	}
 }
