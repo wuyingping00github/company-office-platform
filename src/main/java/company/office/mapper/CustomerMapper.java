@@ -1,22 +1,18 @@
 package company.office.mapper;
 
+import java.sql.Date;
 import java.util.List;
 
-import org.apache.ibatis.annotations.Insert;
-import org.apache.ibatis.annotations.Mapper;
-import org.apache.ibatis.annotations.Options;
-import org.apache.ibatis.annotations.Update;
+import org.apache.ibatis.annotations.*;
 import company.office.entity.Customer;
 
 /**
  * dao曾的数据操作框架使用的是mybtis,dao曾使用Mapper而不是Reposity
- * 
  * @author  吴应平
  *
  */
 @Mapper
 public interface CustomerMapper {
-
 
 	/**
 	 * 创建表
@@ -24,9 +20,9 @@ public interface CustomerMapper {
 	@Update("CREATE TABLE IF"+
 	"NOT EXISTS"+
 	"customer ( customer_id   BIGINT  AUTO_INCREMENT,"+
-	"customer_name  VARCHAR(128) NOT NULL, "+
+	"customer_name  VARCHAR(255) NOT NULL, "+
 	"customer_birthday DATE  NOT NULL,"+
-	"customer_password VARCHAR(128) NOT NULL,"+
+	"customer_password VARCHAR(255) NOT NULL,"+
 	"customer_gender   VARCHAR(6)   NOT NULL,"+
 	"customer_phone    BIGINT       NOT NULL,"+
 	"PRIMARY KEY (customer_id)")
@@ -35,13 +31,14 @@ public interface CustomerMapper {
 	/**
 	 * 删除表，清空表内容
 	 */
+	@Update("TRUNCATE TABLE customer")
 	void truncateTable();
 
 	/**
 	 * 增加信息，按照顾客对象来增加
 	 * 
 	 * @param customer
-	 * @return
+	 * @return customerId
 	 */
 	@Insert("INSERT INTO customer ( customer_name,customer_password, customer_birthday,"
 			+ " customer_gender,customer_phone )  VALUES ( #{customerName}, #{customerPassword}, " +
@@ -54,25 +51,49 @@ public interface CustomerMapper {
 	 * 
 	 * @param customer
 	 */
+	@Update("UPDATE Customer SET " +
+			"customer_name=#{customerName}, customer_birthday=#{customerBirthday}, " +
+			"customer_password=#{customerPassword}, " +
+			"customer_gender=#{customerGender}, customer_phone=#{customerPhone} " +
+			"WHERE customer_Id=#{customerId}")
 	void update(Customer customer);
 
 	/**
 	 * 删除信息，按照顾客ID来删除
-	 * 
 	 * @param customerId
 	 */
-	void delete(Long customerId);
+	@Delete("DELETE FORM customer WHERE  customer_id=#{customerId}")
+	void delete(@Param("customerId") Long customerId);
 
 	/**
 	 * 查询所有的客户
-	 * 
 	 * @return 返回顾客列表
 	 */
+	@Select("SELECT * FROM  customer")
+	@Results({ @Result(property = "customerId", column = "customer_id", javaType = Long.class),
+			   @Result(property = "customerName", column = "customer_name") ,
+			   @Result(property = "customerGender", column = "customer_gender") ,
+			   @Result(property = "customerPassword", column = "customer_password") ,
+               @Result(property = "customerBirthday", column = "customer_birthday",javaType = Date.class) ,
+			   @Result(property = "customerPhone", column = "customer_phone") })
 	List<Customer> selectAll();
 
 	/**
 	 * 删除表，直接从数据库移除该表
 	 */
+	@Update("DROP TABLE IF EXISTS customer")
 	void dropTable();
 
+	/**
+	 * 查询所有的客户
+	 * @return 返回顾客列表
+	 */
+	@Select("SELECT * FROM customer WHERE customer_id=#{customerId}")
+	@Results({ @Result(property = "customerId", column = "customer_id", javaType = Long.class),
+			   @Result(property = "customerName", column = "customer_name") ,
+			   @Result(property = "customerGender", column = "customer_gender") ,
+			   @Result(property = "customerPassword", column = "customer_password") ,
+			   @Result(property = "customerBirthday", column = "customer_birthday",javaType = Date.class) ,
+			   @Result(property = "customerPhone", column = "customer_phone") })
+	Customer selectOne(Long customerId);
 }

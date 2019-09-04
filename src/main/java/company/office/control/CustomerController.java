@@ -1,13 +1,13 @@
 package company.office.control;
 
-import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
 import com.alibaba.fastjson.JSONArray;
-import company.office.entity.HarvestInfo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.data.repository.query.Param;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
@@ -15,23 +15,25 @@ import company.office.entity.Customer;
 import company.office.service.CustomerService;
 
 
-
+//使用Restful的编程，需要在方法函数上面注明@PathVariable
 @RestController
-@SpringBootApplication
+@RequestMapping("customer")
 public class CustomerController {
+
 
 	@Autowired
 	private CustomerService customerService;
 	
 	@ResponseBody
-	@RequestMapping("getCustomer")
-	public String getCustomer() {
+	@RequestMapping("create")
+	public String createCustomer() {
 		customerService.createIfNotExistsTable();
 		return "success";
 	}
-	
+
+
 	@ResponseBody
-	@RequestMapping("addCustomer")
+	@RequestMapping("add")
 	public String addCustomer(){
 		Customer customer = new Customer("customerName", "customerPassword", "男",
 				new Date(), 15207104346L);
@@ -40,7 +42,7 @@ public class CustomerController {
 	}
 	
 	@ResponseBody
-	@RequestMapping("deleteCustomer")
+	@RequestMapping("delete")
 	public String deleteCustomer() {
 		Customer customer = new Customer();
 		customer.setCustomerId(15207104346L);
@@ -49,21 +51,34 @@ public class CustomerController {
 	}
 
 	@ResponseBody
-	@RequestMapping("showCustomer")
+	@RequestMapping("getOne/{id}")
+	//使用Restful的编程，需要在方法函数上面注明@PathVariable
+	public String getCustomer(@PathVariable("id") Long id) {
+		Customer customer = customerService.selectOne(id);
+		String json =JSONArray.toJSONString(customer);
+		return json;
+	}
+
+	@ResponseBody
+	@RequestMapping("show")
 	public String showCustomer() {
+		List<Customer> list = customerService.selectAll();
+		String json =JSONArray.toJSONString(list);
+		return json;
+	}
+	@ResponseBody
+	@RequestMapping("update/{id}")
+	//使用Restful的编程，需要在方法函数上面注明@PathVariable
+	public String updateCustomer(@PathVariable("id") Long id) {
 		Customer customer = new Customer();
-		customer.setCustomerId(15207104346L);
+		customer.setCustomerId(id);
 		customer.setCustomerBirthday(new Date());
 		customer.setCustomerGender("男");
 		customer.setCustomerName("铁男");
 		customer.setCustomerPassword("123456");
-		customer.getCustomerPhone(15207104346L);
-		HarvestInfo harvestInfo=new HarvestInfo(1520710,15207104346L,"武汉","15207104346");
-		List list = new ArrayList();
-		list.add(harvestInfo);
-		customer.setHarvestList(list);
-		String json =JSONArray.toJSONString(customer);
-
-		return json;
+		customer.setCustomerPhone(id);
+		customerService.update(customer);
+		return "success";
 	}
+
 }

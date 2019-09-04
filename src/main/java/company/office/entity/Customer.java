@@ -13,7 +13,7 @@ import javax.persistence.Entity;
 public class Customer {
 
 	// 顾客账号，也是ID
-	private long customerId;
+	private Long customerId;
 	// 顾客名称
 	private String customerName;
 	// 登陆密码
@@ -23,11 +23,11 @@ public class Customer {
 	// 顾客生日
 	private Date customerBirthday;
 	// 顾客手机
-	private long customerPhone;
+	private Long customerPhone;
 	// 顾客收货信息,一个顾客有多个收货信息
 	private List<HarvestInfo> harvestList;
 
-	public long getCustomerId() {
+	public Long getCustomerId() {
 		return customerId;
 	}
 
@@ -55,8 +55,8 @@ public class Customer {
 		return customerGender;
 	}
 
-	public void setCustomerGender(String customergender) {
-		this.customerGender = customergender;
+	public void setCustomerGender(String customerGender) {
+		this.customerGender = customerGender;
 	}
 
 	public Date getCustomerBirthday() {
@@ -67,11 +67,11 @@ public class Customer {
 		this.customerBirthday = customerBirthday;
 	}
 
-	public long getCustomerPhone(long l) {
+	public Long getCustomerPhone() {
 		return customerPhone;
 	}
 
-	public void setCustomerPhone(long customerPhone) {
+	public void setCustomerPhone(Long customerPhone) {
 		this.customerPhone = customerPhone;
 	}
 
@@ -131,6 +131,18 @@ public class Customer {
 		this.customerGender = customergender;
 		this.customerBirthday = customerBirthday;
 		this.customerPhone = customerPhone;
-		
+	}
+
+	@Override
+	public String toString() {
+		return "Customer{" +
+				"customerId=" + customerId +
+				", customerName='" + customerName + '\'' +
+				", customerPassword='" + customerPassword + '\'' +
+				", customerGender='" + customerGender + '\'' +
+				", customerBirthday=" + customerBirthday +
+				", customerPhone=" + customerPhone +
+				", harvestList=" + harvestList +
+				'}';
 	}
 }

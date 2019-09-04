@@ -49,4 +49,15 @@ public interface CustomerService {
      */
     void dropTable();
 
+    /**
+     * 更新客户信息
+     * @return void
+     */
+   void update(Customer customer);
+
+    /**
+     * 查询所有的客户
+     * @return 返回顾客列表
+     */
+     Customer selectOne(Long Id);
 }

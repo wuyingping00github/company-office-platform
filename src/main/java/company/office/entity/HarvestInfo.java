@@ -8,25 +8,25 @@ package company.office.entity;
 public class HarvestInfo {
 	
 	//收获信息Id
-	private long harvestId;
+	private Long harvestId;
 	//顾客账号，也是ID,外键
-	private long customerId;
+	private Long customerId;
 	//收货地址
 	private String harvestAddress;
 	//收获电话
 	private String harvestPhone;
 
 	
-	public long getHarvestId() {
+	public Long getHarvestId() {
 		return harvestId;
 	}
-	public void setHarvestId(long harvestId) {
+	public void setHarvestId(Long harvestId) {
 		this.harvestId = harvestId;
 	}
-	public long getCustomerId() {
+	public Long getCustomerId() {
 		return customerId;
 	}
-	public void setCustomerId(long customerId) {
+	public void setCustomerId(Long customerId) {
 		this.customerId = customerId;
 	}
 	public String getHarvestAddress() {
@@ -47,7 +47,7 @@ public class HarvestInfo {
 	 * @param harvestAddress 收获地址
 	 * @param harvestPhone   收货电话
 	 */
-	public HarvestInfo(long harvestId,long customerId, String harvestAddress, String harvestPhone) {
+	public HarvestInfo(Long harvestId,Long customerId, String harvestAddress, String harvestPhone) {
 		super();
 		this.harvestId = harvestId;
 		this.customerId = customerId;
