@@ -17,7 +17,7 @@
 	<parent>
 		<groupId>org.springframework.boot</groupId>
 		<artifactId>spring-boot-starter-parent</artifactId>
-		<version>1.5.6.RELEASE</version>
+		<version>2.1.6.RELEASE</version>
 	</parent>
 
 	<dependencies>
@@ -78,8 +78,6 @@
 			<version>1.0.25</version>
 		</dependency>
 
-	
-
 		<!-- jta 管理多个数据源的事务 -->
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
@@ -128,13 +126,6 @@
 			<artifactId>commons-email</artifactId>
 			<version>1.4</version>
 		</dependency>
-
-		<dependency>
-			<groupId>junit</groupId>
-			<artifactId>junit</artifactId>
-			<version>3.8.1</version>
-			<scope>test</scope>
-		</dependency>
 		<!-- servlet依赖的jar包start -->
 		<dependency>
 			<groupId>javax.servlet</groupId>
@@ -175,6 +166,22 @@
           <groupId>org.springframework.boot</groupId>
           <artifactId>spring-boot-starter-data-jpa</artifactId>
       </dependency>
+		<dependency>
+			<groupId>com.vaadin.external.google</groupId>
+			<artifactId>android-json</artifactId>
+			<version>0.0.20131108.vaadin1</version>
+			<scope>compile</scope>
+		</dependency>
+		<dependency>
+			<groupId>com.alibaba</groupId>
+			<artifactId>fastjson</artifactId>
+			<version>1.2.59</version>
+		</dependency>
+		<dependency>
+			<groupId>com.alibaba</groupId>
+			<artifactId>fastjson</artifactId>
+			<version>1.2.59</version>
+		</dependency>
 	</dependencies>
 	<build>
 		<finalName>company-office-platform</finalName>
@@ -194,6 +201,19 @@
 				</executions>
 			</plugin>
 		</plugins>
-		
+		<resources>	
+         <resource>	
+             <directory>src/main/java</directory>	
+             <excludes>	
+                 <exclude>**/*.java</exclude>	
+             </excludes>	
+         </resource>	
+         <resource>	
+             <directory>src/main/resources</directory>	
+             <includes>	
+                 <include>**/*.*</include>	
+             </includes>	
+        </resource>	
+    </resources>
 	</build>
 </project>

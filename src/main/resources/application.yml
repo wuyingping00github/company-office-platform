@@ -1,9 +1,0 @@
-server:
-  port: 8080
-  servlet:
-    context-path: /company-office
- 
-mybatis:
-  config-location: classpath:mybaties/sqlMapConfig.xml
-  mapper-locations: classpath:mapper/*.xml
-  type-aliases-package: company.office.mapper

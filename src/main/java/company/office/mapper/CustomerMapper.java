@@ -6,7 +6,6 @@ import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Options;
 import org.apache.ibatis.annotations.Update;
-
 import company.office.entity.Customer;
 
 /**
@@ -18,7 +17,6 @@ import company.office.entity.Customer;
 @Mapper
 public interface CustomerMapper {
 
-	String[] INSERT = null;
 
 	/**
 	 * 创建表
@@ -32,8 +30,7 @@ public interface CustomerMapper {
 	"customer_gender   VARCHAR(6)   NOT NULL,"+
 	"customer_phone    BIGINT       NOT NULL,"+
 	"PRIMARY KEY (customer_id)")
-	void createIfNotExistsTable()
-	;
+	void createIfNotExistsTable();
 
 	/**
 	 * 删除表，清空表内容
@@ -47,8 +44,8 @@ public interface CustomerMapper {
 	 * @return
 	 */
 	@Insert("INSERT INTO customer ( customer_name,customer_password, customer_birthday,"
-			+ " customer_gender,customer_phone )  VALUES ( #{customerId}, #{customerName},"
-			+ "#{customerBirthday}, #{customerPassword}, #{customerGender}, #{customerPhone}) ")
+			+ " customer_gender,customer_phone )  VALUES ( #{customerName}, #{customerPassword}, " +
+			"#{customerBirthday}, #{customerGender}, #{customerPhone}) ")
 	@Options(useGeneratedKeys = true, keyProperty = "customer.customerId")
 	Long insert(Customer customer);
 
