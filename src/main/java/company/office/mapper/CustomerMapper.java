@@ -1,5 +1,6 @@
 package company.office.mapper;
 
+import java.sql.Date;
 import java.util.List;
 
 import org.apache.ibatis.annotations.*;
@@ -50,7 +51,11 @@ public interface CustomerMapper {
 	 * 
 	 * @param customer
 	 */
-	@Update("UPDATE Customer SET customer_name=#{customerName},customer_birthday=#{customerBirthday}, customer_password=#{customerPassword}, customer_gender=#{customerGender},customer_phone=#{customerPhone} WHERE customer_Id=#{customerId}")
+	@Update("UPDATE Customer SET " +
+			"customer_name=#{customerName}, customer_birthday=#{customerBirthday}, " +
+			"customer_password=#{customerPassword}, " +
+			"customer_gender=#{customerGender}, customer_phone=#{customerPhone} " +
+			"WHERE customer_Id=#{customerId}")
 	void update(Customer customer);
 
 	/**
@@ -62,9 +67,15 @@ public interface CustomerMapper {
 
 	/**
 	 * 查询所有的客户
-	 * 
 	 * @return 返回顾客列表
 	 */
+	@Select("SELECT * FROM  customer")
+	@Results({ @Result(property = "customerId", column = "customer_id", javaType = Long.class),
+			   @Result(property = "customerName", column = "customer_name") ,
+			   @Result(property = "customerGender", column = "customer_gender") ,
+			   @Result(property = "customerPassword", column = "customer_password") ,
+               @Result(property = "customerBirthday", column = "customer_birthday",javaType = Date.class) ,
+			   @Result(property = "customerPhone", column = "customer_phone") })
 	List<Customer> selectAll();
 
 	/**
@@ -77,6 +88,12 @@ public interface CustomerMapper {
 	 * 查询所有的客户
 	 * @return 返回顾客列表
 	 */
-	@Select("select * from customer where customer_id=#{customerId}")
-	Customer selectOne(Long Id);
+	@Select("SELECT * FROM customer WHERE customer_id=#{customerId}")
+	@Results({ @Result(property = "customerId", column = "customer_id", javaType = Long.class),
+			   @Result(property = "customerName", column = "customer_name") ,
+			   @Result(property = "customerGender", column = "customer_gender") ,
+			   @Result(property = "customerPassword", column = "customer_password") ,
+			   @Result(property = "customerBirthday", column = "customer_birthday",javaType = Date.class) ,
+			   @Result(property = "customerPhone", column = "customer_phone") })
+	Customer selectOne(Long customerId);
 }

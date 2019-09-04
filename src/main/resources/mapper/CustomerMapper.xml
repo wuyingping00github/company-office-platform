@@ -13,12 +13,6 @@
         <result column="customer_password" property="customerPassword" javaType="String"   jdbcType="VARCHAR"/>
         <result column="customer_gender"   property="customerGender"   javaType="String"   jdbcType="VARCHAR"/>
         <result column="customer_phone"    property="customerPhone"    javaType="Long"     jdbcType="BIGINT"/>
-    <collection property="harvestList" ofType="company.office.entity.HarvestInfo">
-        <id     column="harvest_id"        property="harvestId"      javaType="Long"    jdbcType="BIGINT"/>
-        <result column="customer_id"       property="customerId"     javaType="Long"    jdbcType="BIGINT"/>
-        <result column="Harvest_Address"   property="harvestAddress" javaType="String"  jdbcType="VARCHAR"/>
-        <result column="Harvest_Phone"     property="HarvestPhone"   javaType="Long"    jdbcType="BIGINT"/>
-        </collection>
     </resultMap>
     
      <update id="createIfNotExistsTable">

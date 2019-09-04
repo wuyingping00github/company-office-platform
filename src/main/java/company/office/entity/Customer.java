@@ -67,7 +67,7 @@ public class Customer {
 		this.customerBirthday = customerBirthday;
 	}
 
-	public Long getCustomerPhone(Long customerPhone) {
+	public Long getCustomerPhone() {
 		return customerPhone;
 	}
 
