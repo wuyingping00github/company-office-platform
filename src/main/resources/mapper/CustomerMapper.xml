@@ -6,7 +6,6 @@
 	两个文件通过mapper.xml文件中的 namespace 形成映射。
  -->
 <mapper namespace="company.office.mapper.CustomerMapper">
-
     <resultMap id="customerMap" type="company.office.entity.Customer">
         <id column="customer_id"           property="customerId"       javaType="Long"     jdbcType="BIGINT"/>
         <result column="customer_name"     property="customerName"     javaType="String"   jdbcType="VARCHAR"/>

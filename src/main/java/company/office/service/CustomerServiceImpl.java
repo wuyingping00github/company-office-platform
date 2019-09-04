@@ -26,7 +26,7 @@ public class CustomerServiceImpl implements CustomerService {
 
 	@Override
 	public void truncateTable() {
-
+        // TODO Auto-generated method stub
 		customerMapper.truncateTable();
 	}
 
@@ -52,6 +52,17 @@ public class CustomerServiceImpl implements CustomerService {
 	public void dropTable() {
 		// TODO Auto-generated method stub
 		customerMapper.dropTable();
+	}
+
+	@Override
+	public void update(Customer customer) {
+		customerMapper.update(customer);
+	}
+
+	@Override
+	public Customer selectOne(Long Id) {
+		Customer customer =	customerMapper.selectOne(Id);
+		return customer;
 	}
 
 }
