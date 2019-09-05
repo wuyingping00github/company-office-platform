@@ -18,6 +18,7 @@ import javax.servlet.http.HttpServletResponse;
  * @author 吴应平
  *
  */
+@SuppressWarnings("serial")
 public class CheckCode extends HttpServlet{
 	public void doGet(HttpServletRequest request,HttpServletResponse response)
 			throws ServletException,IOException
