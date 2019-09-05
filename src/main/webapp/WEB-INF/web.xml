@@ -4,4 +4,15 @@
 
 <web-app>
   <display-name>Archetype Created Web Application</display-name>
+
+
+
+  <servlet>
+    <servlet-name>CheckCode</servlet-name>
+    <servlet-class>company.office.util.CheckCode</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>CheckCode</servlet-name>
+    <url-pattern>/checkCode</url-pattern>
+  </servlet-mapping>
 </web-app>
