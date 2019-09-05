@@ -5,8 +5,6 @@ import java.util.List;
 
 import com.alibaba.fastjson.JSONArray;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.data.repository.query.Param;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -53,10 +51,9 @@ public class CustomerController {
 	@ResponseBody
 	@RequestMapping("getOne/{id}")
 	//使用Restful的编程，需要在方法函数上面注明@PathVariable
-	public String getCustomer(@PathVariable("id") Long id) {
+	public Customer getCustomer(@PathVariable("id") Long id) {
 		Customer customer = customerService.selectOne(id);
-		String json =JSONArray.toJSONString(customer);
-		return json;
+		return customer;
 	}
 
 	@ResponseBody

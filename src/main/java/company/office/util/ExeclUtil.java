@@ -87,8 +87,6 @@ public class ExeclUtil {
             }
             System.out.print("\n");
         }
-
+        xssfWorkbook.close();
 }
-
 }
-	
