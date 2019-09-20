@@ -5,7 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import company.office.entity.Customer;
-import company.office.mapper.CustomerMapper;
+import company.office.dao.CustomerMapper;
 
 /**
  * Customer的service曾的实现类
@@ -61,8 +61,7 @@ public class CustomerServiceImpl implements CustomerService {
 
 	@Override
 	public Customer selectOne(Long Id) {
-		Customer customer =	customerMapper.selectOne(Id);
-		return customer;
+		return customerMapper.selectOne(Id);
 	}
 
 }

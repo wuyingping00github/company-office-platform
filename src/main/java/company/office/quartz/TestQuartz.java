@@ -1,24 +1,25 @@
 package company.office.quartz;
 
-import org.springframework.scheduling.quartz.QuartzJobBean;
-
-import java.util.TimerTask;
 import java.util.concurrent.Executors;
 import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.TimeUnit;
 
+/**
+ * 这是直接处理的定时任务
+ *  * 只需要讲业务逻辑代码卸载这里就可以了丙炔启动
+ */
 public class TestQuartz  {
     public static void main(String[] args) {
         Runnable runnable = new Runnable() {
             @Override
             public void run() {
                 //将需要定时的任务放在这里
-                System.out.println("正常输出");
+                System.out.println("这里是代码逻辑处理！！");
             }
         };
         //使用SchduledExecutorService进行定时任务的启动，这里最为合理
         ScheduledExecutorService scheduledExecutorService = Executors.newSingleThreadScheduledExecutor();
-        scheduledExecutorService.scheduleAtFixedRate(runnable,000000,0000001,TimeUnit.SECONDS);
+        scheduledExecutorService.scheduleAtFixedRate(runnable,000000,60*60*24,TimeUnit.SECONDS);
     }
 
     /**
@@ -36,7 +37,6 @@ public class TestQuartz  {
          */
         public void ServiceTask(){
         System.out.println("这是业务逻辑代码！！");
-
         }
 
      }

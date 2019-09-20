@@ -22,7 +22,7 @@ public class CustomerController {
 	@Autowired
 	private CustomerService customerService;
 	
-	@ResponseBody
+
 	@RequestMapping("create")
 	public String createCustomer() {
 		customerService.createIfNotExistsTable();
@@ -30,7 +30,7 @@ public class CustomerController {
 	}
 
 
-	@ResponseBody
+
 	@RequestMapping("add")
 	public String addCustomer(){
 		Customer customer = new Customer("customerName", "customerPassword", "男",
@@ -39,7 +39,7 @@ public class CustomerController {
 		return "success";
 	}
 	
-	@ResponseBody
+
 	@RequestMapping("delete")
 	public String deleteCustomer() {
 		Customer customer = new Customer();
@@ -48,7 +48,7 @@ public class CustomerController {
 		return "success";
 	}
 
-	@ResponseBody
+
 	@RequestMapping("getOne/{id}")
 	//使用Restful的编程，需要在方法函数上面注明@PathVariable
 	public Customer getCustomer(@PathVariable("id") Long id) {
@@ -56,14 +56,14 @@ public class CustomerController {
 		return customer;
 	}
 
-	@ResponseBody
+
 	@RequestMapping("show")
 	public String showCustomer() {
 		List<Customer> list = customerService.selectAll();
 		String json =JSONArray.toJSONString(list);
 		return json;
 	}
-	@ResponseBody
+
 	@RequestMapping("update/{id}")
 	//使用Restful的编程，需要在方法函数上面注明@PathVariable
 	public String updateCustomer(@PathVariable("id") Long id) {

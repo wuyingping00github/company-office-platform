@@ -11,11 +11,14 @@
     </annotationProcessing>
     <bytecodeTargetLevel>
       <module name="company-office-platform" target="1.8" />
+      <module name="finance" target="1.8" />
+      <module name="humanresources" target="1.8" />
     </bytecodeTargetLevel>
   </component>
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
       <module name="company-office-platform" options="-parameters" />
+      <module name="humanresources" options="" />
     </option>
   </component>
 </project>

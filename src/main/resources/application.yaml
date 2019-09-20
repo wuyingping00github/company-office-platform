@@ -1,0 +1,40 @@
+logging:
+  level:
+    com:
+      hehe:
+        mapper: debug
+mybatis:
+  mapper-locations: classPath:mapper/*Mapper.xml
+  typeAliasesPackage: company.office.entity
+  configuration:
+    map-underscore-to-camel-case: true
+    cache-enabled: false
+server:
+  servlet:
+    context-path: /company-office
+spring:
+  autoconfigure:
+    exclude: org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration
+  banner:
+    charset: UTF-8
+  datasource:
+    driverClassName: com.mysql.jdbc.Driver
+    type: com.alibaba.druid.pool.DruidDataSource
+    url: jdbc:mysql://localhost:3306/testData?serverTimezone=UTC&useSSL=false&useUnicode=true&characterEncoding=UTF-8
+    username: root
+    password: root123456
+
+  freemarker:
+    content-type: text/html
+    request-context-attribute: request
+    template-loader-path: classPath:/templates/
+  jackson:
+    date-format: yyyy-MM-dd HH:mm:ss
+    time-zone: GMT+8
+  thymeleaf:
+    cache: false
+    mode: HTML5
+    prefix: classpath:/templates/
+    servlet:
+      content-type: text/html
+    suffix: .html

@@ -5,7 +5,7 @@
 	注意：使用MAPPER代理开发时，nameSpace有特殊且重要的作用
 	两个文件通过mapper.xml文件中的 namespace 形成映射。
  -->
-<mapper namespace="company.office.mapper.CustomerMapper">
+<mapper namespace="company.office.dao.CustomerMapper">
     <resultMap id="customerMap" type="company.office.entity.Customer">
         <id column="customer_id"           property="customerId"       javaType="Long"     jdbcType="BIGINT"/>
         <result column="customer_name"     property="customerName"     javaType="String"   jdbcType="VARCHAR"/>
@@ -15,7 +15,7 @@
         <result column="customer_phone"    property="customerPhone"    javaType="Long"     jdbcType="BIGINT"/>
     </resultMap>
     
-     <update id="createIfNotExistsTable">
+     <update id="createIfNotExistsTable" >
         CREATE TABLE IF NOT EXISTS customer (
         customer_id       BIGINT       AUTO_INCREMENT,
         customer_name     VARCHAR(128) NOT NULL,
@@ -23,7 +23,7 @@
         customer_password VARCHAR(128) NOT NULL, 
         customer_gender   VARCHAR(6)   NOT NULL,
         customer_phone    BIGINT       NOT NULL, 
-        PRIMARY KEY (customer_id))
+        PRIMARY KEY (customer_id)           )
     </update>
 
     <update id="truncateTable">
