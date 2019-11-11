@@ -2,7 +2,9 @@ package company.office.service;
 
 import java.util.List;
 
+import company.office.aop.TestAOP;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 import company.office.entity.Customer;
 import company.office.dao.CustomerMapper;
@@ -11,6 +13,7 @@ import company.office.dao.CustomerMapper;
  * Customer的service曾的实现类
  * @author 吴应平
  */
+@Component
 @Service
 public class CustomerServiceImpl implements CustomerService {
 	
@@ -26,7 +29,6 @@ public class CustomerServiceImpl implements CustomerService {
 
 	@Override
 	public void truncateTable() {
-        // TODO Auto-generated method stub
 		customerMapper.truncateTable();
 	}
 

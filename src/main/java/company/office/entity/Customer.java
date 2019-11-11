@@ -1,5 +1,7 @@
 package company.office.entity;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+
 import java.util.Date;
 import java.util.List;
 
@@ -63,6 +65,8 @@ public class Customer {
 
 	public void setCustomerBirthday(Date customerBirthday) {
 		this.customerBirthday = customerBirthday;
+
+
 	}
 
 	public Long getCustomerPhone() {
@@ -143,4 +147,7 @@ public class Customer {
 				", harvestList=" + harvestList +
 				'}';
 	}
+
+
+
 }

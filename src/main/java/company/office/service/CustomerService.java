@@ -2,6 +2,8 @@ package company.office.service;
 
 import java.util.List;
 
+import org.springframework.context.annotation.ComponentScan;
+import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 
 import company.office.entity.Customer;
@@ -12,6 +14,7 @@ import company.office.entity.Customer;
  *
  */
 @Service
+@ComponentScan
 public interface CustomerService {
 	
 

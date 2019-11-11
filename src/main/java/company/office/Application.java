@@ -2,10 +2,10 @@ package company.office;
 
 import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.boot.SpringApplication;
+import org.springframework.boot.SpringBootConfiguration;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.context.annotation.ComponentScan;
 
-
+@SpringBootConfiguration
 @MapperScan("company.office.dao")
 @SpringBootApplication
 public class Application {
