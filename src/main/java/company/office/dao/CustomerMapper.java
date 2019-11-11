@@ -20,6 +20,15 @@ public interface CustomerMapper {
 	/**
 	 * 创建表
 	 */
+	/*@Update("UPDATE customer" +
+			"    SET" +
+			"    customer_name = #{customerName}," +
+			"    customer_password = #{customerPassword}," +
+			"    customer_gender = #{customerGender}," +
+			"    customer_birthday = #{customerBirthday}," +
+			"    customer_phone = #{customerPhone}" +
+			"    WHERE" +
+			"    customer_id = #{customerId}")*/
 	void createIfNotExistsTable();
 	/**
 	 * 删除表，清空表内容
